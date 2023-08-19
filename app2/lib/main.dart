@@ -30,6 +30,15 @@ class HomeActivity extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    //buttonStyle
+    ButtonStyle buttonStyle=TextButton.styleFrom(
+      padding: EdgeInsets.all(9),
+      backgroundColor: Colors.blue,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(23))
+      )
+
+    );
     return Scaffold(
       appBar: AppBar(
           titleSpacing: 10,
@@ -160,8 +169,8 @@ class HomeActivity extends StatelessWidget{
           ],
         ),
       ),
-
-      body: Row(
+//row container
+    /*  body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
@@ -204,7 +213,16 @@ class HomeActivity extends StatelessWidget{
             ),
           )
         ],
-      )
+      )*/
+      //button
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          TextButton(onPressed: (){}, child: Text('Text Button'),style: buttonStyle,),
+          ElevatedButton(onPressed: (){}, child: Text('EleButton')),
+          OutlinedButton(onPressed: (){}, child: Text('outLine'))
+        ],
+      ),
     );
   }
 

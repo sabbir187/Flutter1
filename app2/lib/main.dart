@@ -1,27 +1,28 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-main(){
-  runApp(const myapp());//myapp
+main() {
+  runApp(const myapp());
 }
 class myapp extends StatelessWidget{
   const myapp({super.key});
 
   @override
   Widget build(BuildContext context) {
-  return MaterialApp(
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData(primarySwatch: Colors.brown),
-    darkTheme: ThemeData(primarySwatch: Colors.red),
-    color: Colors.deepOrange,
-    home: HomeActivity(),);
+   return MaterialApp(
+     debugShowCheckedModeBanner: false,
+     theme: ThemeData(primarySwatch: Colors.green),
+     darkTheme: ThemeData(primarySwatch: Colors.deepPurple),
+     color: Colors.deepOrangeAccent,
+     home: HomeActivity(),);
   }
 
 }
 class HomeActivity extends StatelessWidget{
   const HomeActivity({super.key});
 
-  mycnackbar(message,context){
+  mysnackbar(message,context){
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(message))
     );
@@ -29,162 +30,182 @@ class HomeActivity extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
-    floatingActionButton: FloatingActionButton(
-      elevation: 30,
-      child: Icon(Icons.add_circle),
-      backgroundColor: Colors.indigo,
-onPressed: (){mycnackbar("floting action", context);},
-    ),
-    appBar: AppBar(
-      titleSpacing: 10,
-      toolbarHeight: 60,
-      toolbarOpacity: 1,
-      backgroundColor: Colors.deepPurple,
-      elevation: 1,
+    return Scaffold(
+      appBar: AppBar(
+          titleSpacing: 10,
+          toolbarHeight: 60,
+          toolbarOpacity: 1,
+         // backgroundColor: Colors.deepPurple,
+          elevation: 1,
 
-      title: Text("MyApp"),
-      actions: [
-        IconButton(onPressed: (){mycnackbar("Searching", context);}, icon: Icon(Icons.search)),
-        IconButton(onPressed: (){mycnackbar("go to email", context);}, icon: Icon(Icons.email))
-      ]
-    ),
+          title: Text("MyApp"),
+          actions: [
+            IconButton(onPressed: (){mysnackbar("Searching", context);}, icon: Icon(Icons.search)),
+            IconButton(onPressed: (){mysnackbar("go to email", context);}, icon: Icon(Icons.email))
+          ]
+      ),
 
-    bottomNavigationBar: BottomNavigationBar(
-      backgroundColor: Colors.deepPurple,
-      currentIndex: 0,
-      items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.message),label: "Message"),
-        BottomNavigationBarItem(icon: Icon(Icons.person),label: "profile"),
-
-      ],
-
-      onTap: (int index){
-        if(index==0){
-          mycnackbar("go to Home", context);
-        }
-        if(index==1){
-          mycnackbar("go to message", context);
-        }
-        if(index==2){
-          mycnackbar("go to profile", context);
-        }
-      },
-    ),
-    drawer: Drawer(
-      child: ListView(
-        children: [
-          DrawerHeader(
-               padding:EdgeInsets.all(0),
-              child:UserAccountsDrawerHeader(
-                decoration: BoxDecoration(color: Colors.deepPurple),
-                accountName: Text("Md Sabbir Ahmed"),
-                accountEmail:Text("mdsabbirahmed187@gmail.com") ,
-                currentAccountPicture: Image.network("https://o.remove.bg/downloads/e77c9f02-ebd7-4bae-b47b-0a16c11193f9/pngtree-the-flutter-colorful-design-png-image_6471373-removebg-preview.png"),
-              )
-          ),
-
-          ListTile(leading: Icon(Icons.contact_emergency),
-            title: Text("contact"),
-            onTap: () {
-            mycnackbar("emaergency contact6", context);
-            },
-          ),
-          ListTile(leading: Icon(Icons.phone),
-            title: Text("phone"),
-            onTap: () {
-              mycnackbar("contact with phone", context);
-            },
-          ),
-          ListTile(leading: Icon(Icons.home),
-            title: Text("home"),
-            onTap: () {
-              mycnackbar("go to homepage", context);
-            },
-          ),
-          ListTile(leading: Icon(Icons.email),
-            title: Text("email"),
-            onTap: () {
-              mycnackbar("email", context);
-            },
-          ),
-          ListTile(leading: Icon(Icons.settings),
-            title: Text("setting"),
-            onTap: () {
-              mycnackbar("go to setting", context);
-            },
-          ),
-          ListTile(leading: Icon(Icons.logout),
-            title: Text("LogOut"),
-            onTap: () {
-              mycnackbar("Logged Out", context);
-            },
-          ),
-
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add_circle),
+        backgroundColor: Colors.blue,
+        elevation: 20,
+        onPressed: (){mysnackbar("floating action button", context);},
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        backgroundColor: Colors.blueGrey,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.message),label: "message"),
+          BottomNavigationBarItem(icon: Icon(Icons.person),label: "profile"),
 
         ],
+        onTap: (int index){
+          if(index==0){
+            mysnackbar('go home', context);
+          }
+          if(index==1){
+            mysnackbar('see message', context);
+          }
+          if(index==2){
+            mysnackbar('see profile', context);
+          }
+        },
       ),
-    ),
-    endDrawer: Drawer(
-      child: ListView(
-        children: [
-          DrawerHeader(
-              padding:EdgeInsets.all(0),
-              child:UserAccountsDrawerHeader(
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              padding: EdgeInsets.all(0),
+             child: UserAccountsDrawerHeader(
+               decoration: BoxDecoration(color: Colors.deepPurple),
+               accountName: Text('Md Sabbir Ahmed'),
+               accountEmail: Text("sabbir12@gmail.com"),
+               currentAccountPicture: Image.network("https://cdn.dribbble.com/users/1622791/screenshots/11174104/flutter_intro.png"),
+             ),
+            ),
+            ListTile(
+              leading: Icon(Icons.email),
+              title: Text('Email'),
+              onTap: (){
+                mysnackbar("emaol", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.phone),
+              title: Text('Phone'),
+            onTap: (){
+                mysnackbar("phone", context);
+            },
+            ),
+            ListTile(
+              leading: Icon(Icons.contact_emergency),
+              title: Text('Contact Emergency'),
+              onTap: (){
+                mysnackbar('emrency contact', context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('LogOut'),
+              onTap: (){
+                mysnackbar("Logout ", context);
+              },
+            )
+
+          ],
+        ),
+      ),
+      endDrawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              padding: EdgeInsets.all(0),
+              child: UserAccountsDrawerHeader(
                 decoration: BoxDecoration(color: Colors.deepPurple),
-                accountName: Text("Md Sabbir Ahmed"),
-                accountEmail:Text("mdsabbirahmed187@gmail.com") ,
-                currentAccountPicture: Image.network("https://o.remove.bg/downloads/e77c9f02-ebd7-4bae-b47b-0a16c11193f9/pngtree-the-flutter-colorful-design-png-image_6471373-removebg-preview.png"),
-              )
-          ),
+                accountName: Text('Md Sabbir Ahmed'),
+                accountEmail: Text("sabbir12@gmail.com"),
+                currentAccountPicture: Image.network("https://cdn.dribbble.com/users/1622791/screenshots/11174104/flutter_intro.png"),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.email),
+              title: Text('Email'),
+              onTap: (){
+                mysnackbar("emaol", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.phone),
+              title: Text('Phone'),
+              onTap: (){
+                mysnackbar("phone", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.contact_emergency),
+              title: Text('Contact Emergency'),
+              onTap: (){
+                mysnackbar('emrency contact', context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('LogOut'),
+              onTap: (){
+                mysnackbar("Logout ", context);
+              },
+            )
 
-          ListTile(leading: Icon(Icons.contact_emergency),
-            title: Text("contact"),
-            onTap: () {
-              mycnackbar("emaergency contact6", context);
-            },
-          ),
-          ListTile(leading: Icon(Icons.phone),
-            title: Text("phone"),
-            onTap: () {
-              mycnackbar("contact with phone", context);
-            },
-          ),
-          ListTile(leading: Icon(Icons.home),
-            title: Text("home"),
-            onTap: () {
-              mycnackbar("go to homepage", context);
-            },
-          ),
-          ListTile(leading: Icon(Icons.email),
-            title: Text("email"),
-            onTap: () {
-              mycnackbar("email", context);
-            },
-          ),
-          ListTile(leading: Icon(Icons.settings),
-            title: Text("setting"),
-            onTap: () {
-              mycnackbar("go to setting", context);
-            },
-          ),
-          ListTile(leading: Icon(Icons.logout),
-            title: Text("LogOut"),
-            onTap: () {
-              mycnackbar("Logged Out", context);
-            },
-          ),
-
-
-        ],
+          ],
+        ),
       ),
-    ),
 
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Container(
+        height: 100,
+        width: 100,
+        alignment: Alignment.center,
+        margin: EdgeInsets.fromLTRB(5, 30, 9, 30),
+        padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+        child: Image.network("https://cdn.dribbble.com/users/1622791/screenshots/11174104/flutter_intro.png"),
+        decoration: BoxDecoration(
+          color: Colors.orange,
+          border: Border.all(color: Colors.blue,width: 4),
 
+        ),
+          ),
+          Container(
+            height: 100,
+            width: 100,
+            alignment: Alignment.center,
+            margin: EdgeInsets.fromLTRB(5, 30, 9, 30),
+            padding: EdgeInsets.all(20),
+            child: Image.network("https://cdn.dribbble.com/users/1622791/screenshots/11174104/flutter_intro.png"),
+            decoration: BoxDecoration(
+              color: Colors.orange,
+              border: Border.all(color: Colors.blue,width: 4),
 
+            ),
+          ),
+          Container(
+            height: 100,
+            width: 100,
+            alignment: Alignment.center,
+            margin: EdgeInsets.fromLTRB(5, 30, 9, 30),
+            padding: EdgeInsets.all(20),
+            child: Image.network("https://cdn.dribbble.com/users/1622791/screenshots/11174104/flutter_intro.png"),
+            decoration: BoxDecoration(
+              color: Colors.orange,
+              border: Border.all(color: Colors.blue,width: 4),
+
+            ),
+          )
+        ],
+      )
     );
-
   }
 
 }

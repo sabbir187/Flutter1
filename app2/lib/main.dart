@@ -27,6 +27,27 @@ class HomeActivity extends StatelessWidget{
       SnackBar(content: Text(message))
     );
   }
+  //Alert Dialouge
+  myalertdialog(context){
+    return showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return Expanded(
+              child: AlertDialog(
+                title: Text('Alert!!'),
+                content: Text('Do you want to Delete'),
+                actions: [
+                  TextButton(onPressed: (){
+                    mysnackbar("Successfully Deleted", context);
+                    Navigator.of(context).pop();
+                    }, child: Text('yes')),
+                  TextButton(onPressed: (){Navigator.of(context).pop();}, child: Text('No'))
+                ],
+              )
+          );
+        }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -215,13 +236,16 @@ class HomeActivity extends StatelessWidget{
         ],
       )*/
       //button
-      body: Row(
+    /*  body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           TextButton(onPressed: (){}, child: Text('Text Button'),style: buttonStyle,),
           ElevatedButton(onPressed: (){}, child: Text('EleButton')),
           OutlinedButton(onPressed: (){}, child: Text('outLine'))
         ],
+      ),*/
+      body: Center(
+        child:   OutlinedButton(onPressed: (){myalertdialog(context);}, child: Text('outLine'))
       ),
     );
   }

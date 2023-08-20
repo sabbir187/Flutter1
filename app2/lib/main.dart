@@ -52,7 +52,8 @@ class HomeActivity extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     //buttonStyle
-    ButtonStyle buttonStyle=TextButton.styleFrom(
+    ButtonStyle buttonStyle=ElevatedButton.styleFrom(
+      minimumSize: Size(double.infinity,60),
       padding: EdgeInsets.all(9),
       backgroundColor: Colors.blue,
       shape: RoundedRectangleBorder(
@@ -244,8 +245,30 @@ class HomeActivity extends StatelessWidget{
           OutlinedButton(onPressed: (){}, child: Text('outLine'))
         ],
       ),*/
-      body: Center(
+      //Buitton for Action Dialog
+     /*ody: Center(
         child:   OutlinedButton(onPressed: (){myalertdialog(context);}, child: Text('outLine'))
+      ),*/
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(padding: EdgeInsets.all(10),child: TextField(
+            decoration: InputDecoration(labelText: 'First Name',border: OutlineInputBorder()),
+          ),
+    ),
+          Padding(padding: EdgeInsets.all(10),child: TextField(
+            decoration: InputDecoration(labelText: 'Last Name',border: OutlineInputBorder()),
+          ),
+          ),
+          Padding(padding: EdgeInsets.all(10),child: TextField(
+            decoration: InputDecoration(labelText: 'Email',border: OutlineInputBorder()),
+          ),
+          ),
+          Padding(padding: EdgeInsets.all(10),
+              child: ElevatedButton(onPressed: (){mysnackbar("Submitted", context);},
+                child: Text('Submit'),style: buttonStyle,)
+          )
+        ],
       ),
     );
   }

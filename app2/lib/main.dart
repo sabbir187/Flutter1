@@ -1,12 +1,22 @@
 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'Fragment/alarmFragment.dart';
+import 'Fragment/balanceFragment.dart';
+import 'Fragment/emailFragment.dart';
+import 'Fragment/homeFragment.dart';
+import 'Fragment/phoneFragment.dart';
+import 'Fragment/profileFragment.dart';
+import 'Fragment/searchFragment.dart';
+import 'Fragment/settingFragment.dart';
+
 main() {
-  runApp(const myapp());
+  runApp( myapp());
 }
 class myapp extends StatelessWidget{
-  const myapp({super.key});
+   myapp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +30,33 @@ class myapp extends StatelessWidget{
 
 }
 class HomeActivity extends StatelessWidget{
-  const HomeActivity({super.key});
+  // HomeActivity({super.key});
+  var MyItems=[
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter1"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter2"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter3"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter4"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter5"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter1"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter2"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter3"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter4"},
+    {"img":"https://technobrains.io/wp-content/uploads/2021/07/flutter-Featured-Blog-Image2.jpg",
+      "title":"flutter5"},
+  ];
 
   mysnackbar(message,context){
     ScaffoldMessenger.of(context).showSnackBar(
@@ -47,7 +83,7 @@ class HomeActivity extends StatelessWidget{
           );
         }
     );
-  }
+  }//alert dailog
 
   @override
   Widget build(BuildContext context) {
@@ -61,20 +97,59 @@ class HomeActivity extends StatelessWidget{
       )
 
     );
-    return Scaffold(
+    return DefaultTabController(
+    length: 8,
+   child:  Scaffold(
       appBar: AppBar(
-          titleSpacing: 10,
+        title: Text("MyApp"),
+        /*  titleSpacing: 10,
           toolbarHeight: 60,
           toolbarOpacity: 1,
          // backgroundColor: Colors.deepPurple,
-          elevation: 1,
+         elevation: 1,
 
-          title: Text("MyApp"),
+         title: Text("MyApp"),
           actions: [
             IconButton(onPressed: (){mysnackbar("Searching", context);}, icon: Icon(Icons.search)),
             IconButton(onPressed: (){mysnackbar("go to email", context);}, icon: Icon(Icons.email))
-          ]
+          ]*/
+        bottom:  TabBar(
+          isScrollable: true,
+          tabs: [
+            Tab(icon: Icon(Icons.home),text: "Home"),
+            Tab(icon: Icon(Icons.search),text: "Search",),
+            Tab(icon: Icon(Icons.person),text: "profile",),
+            Tab(icon: Icon(Icons.email),text: "Email",),
+            Tab(icon: Icon(Icons.phone),text: "phone",),
+            Tab(icon: Icon(Icons.settings),text: "Setting",),
+            Tab(icon: Icon(Icons.access_alarm),text: "Alarm",),
+            Tab(icon: Icon(Icons.account_balance),text: "Balance",),
+
+
+          ],
+          onTap: (int index){
+            if (index==0)
+              mysnackbar("home", context);
+
+          },
+        ),
       ),
+      body: TabBarView(
+        children: [
+
+
+
+          homeFragment(),
+          searchFragment(),
+          profileFragment(),
+          emailFragment(),
+          phoneFragment(),
+          settingFragment(),
+          alarmFragment(),
+          balanceFragment(),
+        ],
+      ),
+
 
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_circle),
@@ -103,7 +178,7 @@ class HomeActivity extends StatelessWidget{
           }
         },
       ),
-      drawer: Drawer(
+    /*  drawer: Drawer(
         child: ListView(
           children: [
             DrawerHeader(
@@ -190,7 +265,7 @@ class HomeActivity extends StatelessWidget{
 
           ],
         ),
-      ),
+      ),*/
 //row container
     /*  body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -246,10 +321,12 @@ class HomeActivity extends StatelessWidget{
         ],
       ),*/
       //Buitton for Action Dialog
-     /*ody: Center(
+     /*body: Center(
         child:   OutlinedButton(onPressed: (){myalertdialog(context);}, child: Text('outLine'))
       ),*/
-      body: Column(
+
+      //Simple Form****
+   /*  body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(padding: EdgeInsets.all(10),child: TextField(
@@ -269,7 +346,44 @@ class HomeActivity extends StatelessWidget{
                 child: Text('Submit'),style: buttonStyle,)
           )
         ],
-      ),
+      ),*/
+      //list view Build
+   /*   body: ListView.builder(
+        itemCount: MyItems.length,
+          itemBuilder:(context,index){
+          return GestureDetector(
+            onTap: (){mysnackbar(MyItems[index]['title'], context);},
+            child: Container(
+              margin: EdgeInsets.all(2),
+              width: double.infinity,
+              height: 200,
+              child: Image.network(MyItems[index]['img']!,fit: BoxFit.fill,)
+            ),
+
+          );
+          },
+      ),*/
+     /*   body: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: 0,
+            childAspectRatio: 1.7
+          ),
+          itemCount: MyItems.length,
+          itemBuilder:(context,index){
+            return GestureDetector(
+              onTap: (){mysnackbar(MyItems[index]['title'], context);},
+              child: Container(
+                  margin: EdgeInsets.all(2),
+                  width: double.infinity,
+                  height: 200,
+                  child: Image.network(MyItems[index]['img']!,fit: BoxFit.fill,)
+              ),
+
+            );
+          },
+        ),*/
+    ),
     );
   }
 

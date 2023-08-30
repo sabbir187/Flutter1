@@ -1,5 +1,6 @@
 
 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,16 +17,16 @@ main() {
   runApp( myapp());
 }
 class myapp extends StatelessWidget{
-   myapp({super.key});
+  myapp({super.key});
 
   @override
   Widget build(BuildContext context) {
-   return MaterialApp(
-     debugShowCheckedModeBanner: false,
-     theme: ThemeData(primarySwatch: Colors.green),
-     darkTheme: ThemeData(primarySwatch: Colors.deepPurple),
-     color: Colors.deepOrangeAccent,
-     home: HomeActivity(),);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.green),
+      darkTheme: ThemeData(primarySwatch: Colors.deepPurple),
+      color: Colors.deepOrangeAccent,
+      home: HomeActivity(),);
   }
 
 }
@@ -60,7 +61,7 @@ class HomeActivity extends StatelessWidget{
 
   mysnackbar(message,context){
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message))
+        SnackBar(content: Text(message))
     );
   }
   //Alert Dialouge
@@ -76,7 +77,7 @@ class HomeActivity extends StatelessWidget{
                   TextButton(onPressed: (){
                     mysnackbar("Successfully Deleted", context);
                     Navigator.of(context).pop();
-                    }, child: Text('yes')),
+                  }, child: Text('yes')),
                   TextButton(onPressed: (){Navigator.of(context).pop();}, child: Text('No'))
                 ],
               )
@@ -89,20 +90,20 @@ class HomeActivity extends StatelessWidget{
   Widget build(BuildContext context) {
     //buttonStyle
     ButtonStyle buttonStyle=ElevatedButton.styleFrom(
-      minimumSize: Size(double.infinity,60),
-      padding: EdgeInsets.all(9),
-      backgroundColor: Colors.blue,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(23))
-      )
+        minimumSize: Size(double.infinity,60),
+        padding: EdgeInsets.all(9),
+        backgroundColor: Colors.blue,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(23))
+        )
 
     );
     return DefaultTabController(
-    length: 8,
-   child:  Scaffold(
-      appBar: AppBar(
-        title: Text("MyApp"),
-        /*  titleSpacing: 10,
+      length: 8,
+      child:  Scaffold(
+        appBar: AppBar(
+          title: Text("MyApp"),
+          /*  titleSpacing: 10,
           toolbarHeight: 60,
           toolbarOpacity: 1,
          // backgroundColor: Colors.deepPurple,
@@ -113,72 +114,72 @@ class HomeActivity extends StatelessWidget{
             IconButton(onPressed: (){mysnackbar("Searching", context);}, icon: Icon(Icons.search)),
             IconButton(onPressed: (){mysnackbar("go to email", context);}, icon: Icon(Icons.email))
           ]*/
-        bottom:  TabBar(
-          isScrollable: true,
-          tabs: [
-            Tab(icon: Icon(Icons.home),text: "Home"),
-            Tab(icon: Icon(Icons.search),text: "Search",),
-            Tab(icon: Icon(Icons.person),text: "profile",),
-            Tab(icon: Icon(Icons.email),text: "Email",),
-            Tab(icon: Icon(Icons.phone),text: "phone",),
-            Tab(icon: Icon(Icons.settings),text: "Setting",),
-            Tab(icon: Icon(Icons.access_alarm),text: "Alarm",),
-            Tab(icon: Icon(Icons.account_balance),text: "Balance",),
+          bottom:  TabBar(
+            isScrollable: true,
+            tabs: [
+              Tab(icon: Icon(Icons.home),text: "Home"),
+              Tab(icon: Icon(Icons.search),text: "Search",),
+              Tab(icon: Icon(Icons.person),text: "profile",),
+              Tab(icon: Icon(Icons.email),text: "Email",),
+              Tab(icon: Icon(Icons.phone),text: "phone",),
+              Tab(icon: Icon(Icons.settings),text: "Setting",),
+              Tab(icon: Icon(Icons.access_alarm),text: "Alarm",),
+              Tab(icon: Icon(Icons.account_balance),text: "Balance",),
 
+
+            ],
+            onTap: (int index){
+              if (index==0)
+                mysnackbar("home", context);
+
+            },
+          ),
+        ),
+        body: TabBarView(
+          children: [
+
+
+
+            homeFragment(),
+            searchFragment(),
+            profileFragment(),
+            emailFragment(),
+            phoneFragment(),
+            settingFragment(),
+            alarmFragment(),
+            balanceFragment(),
+          ],
+        ),
+
+
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add_circle),
+          backgroundColor: Colors.blue,
+          elevation: 20,
+          onPressed: (){mysnackbar("floating action button", context);},
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 1,
+          backgroundColor: Colors.blueGrey,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.message),label: "message"),
+            BottomNavigationBarItem(icon: Icon(Icons.person),label: "profile"),
 
           ],
           onTap: (int index){
-            if (index==0)
-              mysnackbar("home", context);
-
+            if(index==0){
+              mysnackbar('go home', context);
+            }
+            if(index==1){
+              mysnackbar('see message', context);
+            }
+            if(index==2){
+              mysnackbar('see profile', context);
+            }
           },
         ),
-      ),
-      body: TabBarView(
-        children: [
-
-
-
-          homeFragment(),
-          searchFragment(),
-          profileFragment(),
-          emailFragment(),
-          phoneFragment(),
-          settingFragment(),
-          alarmFragment(),
-          balanceFragment(),
-        ],
-      ),
-
-
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_circle),
-        backgroundColor: Colors.blue,
-        elevation: 20,
-        onPressed: (){mysnackbar("floating action button", context);},
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
-        backgroundColor: Colors.blueGrey,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.message),label: "message"),
-          BottomNavigationBarItem(icon: Icon(Icons.person),label: "profile"),
-
-        ],
-        onTap: (int index){
-          if(index==0){
-            mysnackbar('go home', context);
-          }
-          if(index==1){
-            mysnackbar('see message', context);
-          }
-          if(index==2){
-            mysnackbar('see profile', context);
-          }
-        },
-      ),
-    /*  drawer: Drawer(
+        /*  drawer: Drawer(
         child: ListView(
           children: [
             DrawerHeader(
@@ -267,7 +268,7 @@ class HomeActivity extends StatelessWidget{
         ),
       ),*/
 //row container
-    /*  body: Row(
+        /*  body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
@@ -311,8 +312,8 @@ class HomeActivity extends StatelessWidget{
           )
         ],
       )*/
-      //button
-    /*  body: Row(
+        //button
+        /*  body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           TextButton(onPressed: (){}, child: Text('Text Button'),style: buttonStyle,),
@@ -320,13 +321,13 @@ class HomeActivity extends StatelessWidget{
           OutlinedButton(onPressed: (){}, child: Text('outLine'))
         ],
       ),*/
-      //Buitton for Action Dialog
-     /*body: Center(
+        //Buitton for Action Dialog
+        /*body: Center(
         child:   OutlinedButton(onPressed: (){myalertdialog(context);}, child: Text('outLine'))
       ),*/
 
-      //Simple Form****
-   /*  body: Column(
+        //Simple Form****
+        /*  body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(padding: EdgeInsets.all(10),child: TextField(
@@ -347,8 +348,8 @@ class HomeActivity extends StatelessWidget{
           )
         ],
       ),*/
-      //list view Build
-   /*   body: ListView.builder(
+        //list view Build
+        /*   body: ListView.builder(
         itemCount: MyItems.length,
           itemBuilder:(context,index){
           return GestureDetector(
@@ -363,7 +364,7 @@ class HomeActivity extends StatelessWidget{
           );
           },
       ),*/
-     /*   body: GridView.builder(
+        /*   body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             crossAxisSpacing: 0,
@@ -383,7 +384,7 @@ class HomeActivity extends StatelessWidget{
             );
           },
         ),*/
-    ),
+      ),
     );
   }
 

@@ -19,7 +19,29 @@ class homeactivity extends StatelessWidget{
   Widget build(BuildContext context) {
 return Scaffold(
   appBar: AppBar(title: Text("MyApp"),),
-  body: Column(
+  body: Center(
+    child: CircularProgressIndicator(
+      color: Color.fromRGBO(27, 232, 124, 1),
+    ),
+  )
+
+ /* Center(
+    child: Card(
+      color: Color.fromRGBO(44, 224, 76, 1),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      shadowColor: Color.fromRGBO(200, 57, 32, 1),
+      elevation: 156,
+      child: SizedBox(
+        height: 200,
+        width: 200,
+        child: Center (child: Text("add card"),),
+      ),
+    ),
+
+  )*/
+
+    //navigation and passing data
+/*  Column(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       ElevatedButton(onPressed: (){
@@ -29,14 +51,14 @@ return Scaffold(
         Navigator.push(context, MaterialPageRoute(builder: (context)=>activity2("Home to activity1")));
       }, child: Text('Go Activity2'))
     ],
-  )
+  )*/
 );
   }
 
 }
 
 
-class activity1 extends StatelessWidget{
+/*class activity1 extends StatelessWidget{
   String msg;
    activity1(
       this.msg,
@@ -45,7 +67,7 @@ class activity1 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+
       appBar: AppBar(title: Text(msg),),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -84,4 +106,4 @@ class activity2 extends StatelessWidget{
     );
   }
 
-}
+}*/

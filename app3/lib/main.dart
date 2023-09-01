@@ -20,10 +20,26 @@ class homeactivity extends StatelessWidget{
 return Scaffold(
   appBar: AppBar(title: Text("MyApp"),),
   body: Center(
+    child: Icon(Icons.camera_alt,size: 100,color: Colors.grey,),
+  )
+
+      //linearprogress
+  /*Center(
+    child: LinearProgressIndicator(
+      color: Color.fromRGBO(27, 232, 124, 1),
+      backgroundColor: Color.fromRGBO(96, 3, 100, 1),
+      minHeight: 10,
+    ),
+  )*/
+
+      //circuler progress
+ /* Center(
     child: CircularProgressIndicator(
       color: Color.fromRGBO(27, 232, 124, 1),
+      backgroundColor: Color.fromRGBO(96, 3, 100, 1),
+      strokeWidth: 10,
     ),
-  )
+  )*/
 
  /* Center(
     child: Card(

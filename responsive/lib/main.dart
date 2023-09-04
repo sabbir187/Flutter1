@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive/style.dart';
+import 'package:responsive_grid/responsive_grid.dart' ;
 
 main()
 {
@@ -24,13 +25,94 @@ class homeactivity extends StatelessWidget{
    return Scaffold(
      appBar: AppBar(title: Text('MyApp'),),
 
+     body: SingleChildScrollView(
+       scrollDirection: Axis.vertical,
+     child:  ResponsiveGridRow(
+         children: [
+           ResponsiveGridCol(
+             xl:3, lg: 3,md: 4,sm: 6,xs: 12,
+             child: Container(
+               height: 100,
+               alignment: Alignment(0, 0),
+               color: Colors.purple,
+
+             ),
+           ),
+           ResponsiveGridCol(
+             xl:3, lg: 3,md: 4,sm: 6,xs: 12,
+             child: Container(
+               height: 100,
+               alignment: Alignment(0, 0),
+               color: Colors.blue,
+
+             ),
+           ),
+           ResponsiveGridCol(
+             xl:3, lg: 3,md: 4,sm: 6,xs: 12,
+             child: Container(
+               height: 100,
+               alignment: Alignment(0, 0),
+               color: Colors.yellow,
+
+             ),
+           ),
+           ResponsiveGridCol(
+             xl:3, lg: 3,md: 4,sm: 6,xs: 12,
+             child: Container(
+               height: 100,
+               alignment: Alignment(0, 0),
+               color: Colors.black,
+
+             ),
+           ),
+           ResponsiveGridCol(
+             xl:3, lg: 3,md: 4,sm: 6,xs: 12,
+             child: Container(
+               height: 100,
+               alignment: Alignment(0, 0),
+               color: Colors.grey,
+
+             ),
+           ),
+           ResponsiveGridCol(
+             xl:3, lg: 3,md: 4,sm: 6,xs: 12,
+             child: Container(
+               height: 100,
+               alignment: Alignment(0, 0),
+               color: Colors.green,
+
+             ),
+           ),
+           ResponsiveGridCol(
+             xl:3, lg: 3,md: 4,sm: 6,xs: 12,
+             child: Container(
+               height: 100,
+               alignment: Alignment(0, 0),
+               color: Colors.deepPurple,
+
+             ),
+           ),
+           ResponsiveGridCol(
+             xl:3, lg: 3,md: 4,sm: 6,xs: 12,
+             child: Container(
+               height: 100,
+               alignment: Alignment(0, 0),
+               color: Colors.brown,
+
+             ),
+           ),
+
+         ],
+       ),
+     )
+
      //Media query
-     body: Column(
+     /*body: Column(
        mainAxisAlignment: MainAxisAlignment.start,
        children: [
          Text("Scren width",style: Headline(context),)
        ],
-     ),
+     ),*/
 
      /*body: Column( //or Row
        mainAxisAlignment: MainAxisAlignment.start,

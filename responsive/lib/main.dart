@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bootstrap/flutter_bootstrap.dart';
 import 'package:responsive/style.dart';
 import 'package:responsive_grid/responsive_grid.dart' ;
 
@@ -24,8 +25,60 @@ class homeactivity extends StatelessWidget{
 
    return Scaffold(
      appBar: AppBar(title: Text('MyApp'),),
+body: SingleChildScrollView(
+  scrollDirection: Axis.vertical,
+  child: BootstrapContainer(
+    fluid: true,
+    children: [
+BootstrapRow(
+  height: 100,
+  children: [
+    BootstrapCol(
+      sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.brown,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.deepPurple,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.green,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.deepPurple,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.grey,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.black,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.yellow,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.blue,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.blueGrey,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.red,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.brown,)),
+    BootstrapCol(
+        sizes: 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-6' ,
+        child: Container(height: 100,color: Colors.deepPurple,)),
 
-     body: SingleChildScrollView(
+  ],
+)
+    ],
+  ),
+),
+
+
+//responsive grid
+     /*body: SingleChildScrollView(
        scrollDirection: Axis.vertical,
      child:  ResponsiveGridRow(
          children: [
@@ -104,7 +157,7 @@ class homeactivity extends StatelessWidget{
 
          ],
        ),
-     )
+     )*/
 
      //Media query
      /*body: Column(

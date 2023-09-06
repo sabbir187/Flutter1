@@ -24,3 +24,10 @@ ButtonStyle buttonStyle(){
 
   );
 }
+
+TextStyle headingtext(){
+  return TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.w700
+  );
+}

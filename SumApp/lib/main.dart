@@ -25,15 +25,22 @@ return homepageview();
 }
 class homepageview extends State<homepage>{
 
-  Map<String, String> formvalue={"nam1":"","nam2":""};
-
+  Map<String, double> formvalue={"nam1":0,"nam2":0};
+double sum=0;
   @override
   Widget build(BuildContext context) {
 
     myonchange(inputkey, inputvalue){
      setState(() {
-       formvalue.update(inputkey, (value) => inputvalue);
+       formvalue.update(inputkey, (value) =>double.parse(inputvalue), );
      });
+    }
+
+    Addall(){
+      setState(() {
+       sum=formvalue['nam1']! + formvalue['nam2']!;
+print(sum);
+      });
     }
 
 
@@ -44,6 +51,7 @@ class homepageview extends State<homepage>{
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          Text(sum.toString(),style:headingtext(),),
        TextFormField(onChanged:(value){
          myonchange("nam1",value);
        },decoration: appstyle('First Name'),),
@@ -57,11 +65,11 @@ class homepageview extends State<homepage>{
           child: ElevatedButton(
           style:buttonStyle(),
 
-          child: Text('add',),
+          child: Text('add'),
 
 
           onPressed: (){
-
+            Addall();
           },
         ),)
         ],

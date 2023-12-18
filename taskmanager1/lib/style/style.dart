@@ -1,5 +1,8 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 const colorRed =Color.fromRGBO(231, 28, 36, 1);
 const colordeepkred =Color.fromRGBO(136, 28, 32, 1);
@@ -60,7 +63,7 @@ DecoratedBox AppDropDownStyle(child){
 
 SvgPicture Background(context){
    return SvgPicture.asset(
-       'assets/image/back.svg',
+       'assets/image/background.svg',
            alignment: Alignment.center,
      width:  MediaQuery.of(context).size.width,
      height:  MediaQuery.of(context).size.height,
@@ -69,7 +72,59 @@ SvgPicture Background(context){
 }
 
 
+ButtonStyle AppButtonStyle(){
+   return ElevatedButton.styleFrom(
+     elevation:  1,
+     padding: EdgeInsets.zero,
+     backgroundColor: Colors.transparent,
+     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))
+   );
+}
 
 
+TextStyle ButtonTextStyle(){
+  return TextStyle(
+    fontSize: 15,
+    fontFamily: 'poppins',
+    fontWeight: FontWeight.w500,
+  );
+}
+
+Ink PrimaryButton(String ButtonText){
+   return Ink(
+     decoration: BoxDecoration(color: colorblue,borderRadius: BorderRadius.circular(6)),
+     child: Container(
+       height: 46,
+       width: double.infinity,
+       alignment: Alignment.center,
+       child:  Text(ButtonText,style:ButtonTextStyle(),),
+     ),
+   );
+}
 
 
+ SuccessToast(msg){
+   Fluttertoast.showToast(
+       msg: msg,
+     gravity: ToastGravity.BOTTOM,
+     timeInSecForIosWeb: 1,
+     toastLength:Toast.LENGTH_SHORT,
+     backgroundColor: colorblue,
+     textColor: colorwhite,
+     fontSize: 17.0,
+
+   );
+}
+
+ ErrorToast(msg){
+  Fluttertoast.showToast(
+    msg: msg,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 1,
+    toastLength:Toast.LENGTH_SHORT,
+    backgroundColor: colorblue,
+    textColor: colorwhite,
+    fontSize: 17.0,
+
+  );
+}

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 const colorRed =Color.fromRGBO(231, 28, 36, 1);
 const colordeepkred =Color.fromRGBO(136, 28, 32, 1);
@@ -13,6 +14,24 @@ const colorwhite =Color.fromRGBO(255, 255, 255, 1);
 const colordarkblue =Color.fromRGBO(44, 62, 80, 1);
 const colorgray =Color.fromRGBO(135, 142, 150, 1);
 const colorlight =Color.fromRGBO(211, 211, 211, 1);
+
+
+PinTheme AppOTPstyle(){
+  return PinTheme(
+    inactiveColor: colorgray,
+    inactiveFillColor: colorwhite,
+    selectedColor: colorgreen,
+    activeColor: colorgray,
+    selectedFillColor: colorgreen,
+    shape: PinCodeFieldShape.box,
+    borderRadius: BorderRadius.circular(5),
+    fieldHeight: 50,
+    borderWidth: 0.5,
+    fieldWidth: 45,
+    activeFillColor: colorwhite,
+  );
+}
+
 
  TextStyle Head1Text(textcolor){
    return TextStyle(
@@ -38,11 +57,11 @@ InputDecoration AppInputDecoration(label){
        borderSide: const BorderSide(color: colorgreen,width: 1),
 
      ),
-         fillColor: colorwhite,
+         fillColor: Colors.white70,
      filled: true,
      contentPadding: EdgeInsets.fromLTRB(20, 10, 10, 20),
      enabledBorder: OutlineInputBorder(
-       borderSide: const BorderSide(color: colorwhite,width:0.0),
+       borderSide: const BorderSide(color: colorgreen,width:0.0),
 
      ),
      border: OutlineInputBorder(),
@@ -92,12 +111,13 @@ TextStyle ButtonTextStyle(){
 
 Ink PrimaryButton(String ButtonText){
    return Ink(
-     decoration: BoxDecoration(color: colorblue,borderRadius: BorderRadius.circular(6)),
+     decoration: BoxDecoration(color: colorgreen,borderRadius: BorderRadius.circular(6)),
      child: Container(
        height: 46,
        width: double.infinity,
        alignment: Alignment.center,
        child:  Text(ButtonText,style:ButtonTextStyle(),),
+
      ),
    );
 }
